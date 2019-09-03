@@ -4,6 +4,7 @@
 var display = document.querySelector('.disp');
 display.textContent = 0;
 
+
 const perc = document.querySelector('.percentage');
 const dec = document.querySelector('.decimal');
 
@@ -36,7 +37,7 @@ nums.forEach(n => n.addEventListener('click', addDisplay));
 //
 
 /// Important Variables
-var current = '';
+var current = '0';
 var currentOp = '';
 var opCount = 0;
 var n;
@@ -46,20 +47,22 @@ var memory = '';
 
 function pressed(e) {
   e.target.classList.add('pressed');
+
   const removeTransition = () => {
     e.target.classList.remove('pressed');
   }
 
-  setTimeout(removeTransition, 100);
+  setTimeout(removeTransition, 70);
 }
 
 
 function addDisplay(e) {
+
   let num = e.target.textContent;
   current = Number( String(current)+num );
   hold = current;
   display.textContent = current;
-  pressed(e);
+
 }
 
 function addOperation(e) {
@@ -87,9 +90,10 @@ function addOperation(e) {
 }
 
 function addDec() {
-  if (!current.includes('.')) {
-    current += '.';
+  if (!String(current).includes('.')) {
+    current = String(current) + '.';
     display.textContent = current;
+
   } else {
     alert('Already includes a decimal!')
   }
@@ -102,11 +106,13 @@ function addPerc() {
 }
 
 function clear() {
+
   current = '';
   n = 0;
   display.textContent = 0;
   opCount = 0;
   currentOp = '';
+
 }
 
 function StoreAddMemory(e) {
