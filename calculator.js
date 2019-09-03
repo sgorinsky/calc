@@ -1,7 +1,8 @@
 //
 // QUERYING DOM ELEMENTS
 //
-var display = document.querySelector('.display');
+var display = document.querySelector('.disp');
+display.textContent = 0;
 
 const perc = document.querySelector('.percentage');
 const dec = document.querySelector('.decimal');
@@ -22,8 +23,13 @@ m.addEventListener('click', StoreAddMemory);
 mc.addEventListener('click', clearMemory);
 
 eq.addEventListener('click', evaluate)
+dec.addEventListener('click', addDec)
+perc.addEventListener('click', addPerc)
+
 ops.forEach(o => o.addEventListener('click', addOperation));
 nums.forEach(n => n.addEventListener('click', addDisplay));
+
+[c, m, mc, eq, dec, perc, ...ops, ...nums].forEach(d => d.addEventListener('click', pressed));
 
 //
 // CALLBACK FUNCTIONS
@@ -38,12 +44,22 @@ var hold = '';
 var memory = '';
 
 
+function pressed(e) {
+  e.target.classList.add('pressed');
+  const removeTransition = () => {
+    e.target.classList.remove('pressed');
+  }
+
+  setTimeout(removeTransition, 100);
+}
+
 
 function addDisplay(e) {
   let num = e.target.textContent;
   current = Number( String(current)+num );
   hold = current;
   display.textContent = current;
+  pressed(e);
 }
 
 function addOperation(e) {
@@ -70,10 +86,25 @@ function addOperation(e) {
   currentOp = e.target.textContent;
 }
 
+function addDec() {
+  if (!current.includes('.')) {
+    current += '.';
+    display.textContent = current;
+  } else {
+    alert('Already includes a decimal!')
+  }
+
+}
+
+function addPerc() {
+  current /= 100;
+  display.textContent = current + '%';
+}
+
 function clear() {
   current = '';
   n = 0;
-  display.textContent = current;
+  display.textContent = 0;
   opCount = 0;
   currentOp = '';
 }
