@@ -1,41 +1,44 @@
+div {
+  border-radius: 5px 5px 5px 5px;
+  vertical-align: middle;
+  text-align: center;
+}
 
 .pressed {
   background-color: lightblue;
   color: red;
 }
 
-.num:hover, .op:hover {
-  background-color: lightgray;
+.num:hover, .ex:hover, .decimal:hover, .percentage:hover {
+  background-color: #00ace6;
+
 }
 
+.op:hover, #equals:hover {
+  background-color: #cc7a00;
+}
 .calculator {
   position: absolute;
-  top:200px;
-  left:200px;
-  width:500px;
-  height:500px;
+  top:20%;
+  left:35%;
+  width:420px;
+  height:453px;
+  border-style: solid;
+  text-align: center;
 }
 
-.in {
-  background-color: red;
-  width:400px;
-  height:50px;
-  margin: 0px 0px 10px 0px;
+.display {
+  background-color: #FF7F50;
+  width:402px;
+  height:60px;
+  margin: 0px 0px 5px 0px;
 }
 
 .numbers {
+  width: 300px;
   float:left;
-  width: 305px;
   position: relative;
-
-
-}
-
-.num {
-  float:left;
-  width: 100px;
-  height: 75px;
-  text-align: center;
+  margin: 0px 5px 0px 2.5px;
 }
 
 .operations {
@@ -43,18 +46,28 @@
   left: 0px;
   width: 105px;
   height: 405px;
-  text-align: center;
+  margin: 0px 0px 0px 5px;
 }
 
-.op {
+.extras {
+  position: relative;
+  top: -95px;
+  margin: 0px 5px 0px 2.5px;
+}
+
+.num, .ex, .decimal, .percentage {
+  float:left;
+  width: 95px;
+  height: 75px;
+  margin: 1px 1px 1px 1px;
+  background-color: #5cd6ff;
+  color: black;
+}
+
+.op, #equals {
   float:left;
   width: 100px;
   height: 75px;
-  align-items: center;
-  justify-content: center;
-}
-
-#last {
-  position:relative;
-  left:100px;
+  background-color: orange;
+  margin: 1px 1px 1px -15px;
 }
